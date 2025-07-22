@@ -1,7 +1,6 @@
 # malwaricon.sh
 
-**malwaricon.sh** is a Bash-based reconnaissance automation script created for security researchers and bug bounty hunters.  
-It automates tasks such as port scanning, subdomain enumeration, directory brute-forcing, certificate parsing, and report generation.
+**malwaricon.sh** is a Bash-based reconnaissance automation script created for security researchers and bug bounty hunters. It automates tasks such as port scanning, subdomain enumeration, directory brute-forcing, certificate parsing, and report generation.
 
 ---
 
