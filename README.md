@@ -1,20 +1,53 @@
 
-**malwaricon.sh** is a bash-based reconnaissance automation script designed for security researchers and bug bounty hunters.  
-It combines several tools to streamline recon tasks like port scanning, directory brute-forcing, certificate parsing, and reporting.
+
+```markdown
+# malwaricon.sh
+
+```
+
+---
+
+\|  /  | \_\_ *| | \_\_\_\_\_  \_\_\_  \_\_\_ \_ \_\_\_\_   \_\_\_\_ *| |* \_\_\_  \_ \_\_
+\| |/| |/ *` | |/ / _ \/ __|/ _ \ '__\ \ / / _` | **/ \_ | '**|
+\| |  | | (*| |   <  **/\_* \  \_\_/ |   \ V / (*| | || (*) | |
+|*|  |*|\_*,*|*|\_\_**||***/\_**|*|    \_/ \_*,*|\_*\_**/|\_|
+
+````
+
+**malwaricon.sh** is a Bash-based reconnaissance automation script created for security researchers and bug bounty hunters.  
+It automates tasks such as port scanning, subdomain enumeration, directory brute-forcing, certificate parsing, and report generation.
+
+---
+
+## Table of Contents
+
+- [Features](#features)  
+- [Requirements](#requirements)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Output](#output)  
+- [Scheduled Scans (Cron)](#scheduled-scans-cron)  
+- [License](#license)  
+- [Disclaimer](#disclaimer)  
+- [Contact](#contact)
+
+---
 
 ## Features
 
-- Port scanning with Nmap  
-- Subdomain enumeration using `crt.sh`  
-- Directory brute-forcing with Dirsearch  
-- Clean output parsing using `grep`, `jq` and bash logic  
-- Generates structured reports per domain  
-- Interactive or automated scan modes  
-- Modular code with support for external libraries (`scan.lib`)
+- Port scanning with **Nmap**  
+- Subdomain enumeration via **crt.sh**  
+- Directory brute-forcing using **Dirsearch**  
+- Clean and structured output parsing using `grep`, `jq`, and shell scripting  
+- Generates organized reports for each scanned domain  
+- Interactive and automated execution modes  
+- Modular support for external libraries (`scan.lib`)
+
+---
 
 ## Requirements
 
-Make sure the following are installed:
+Before using `malwaricon.sh`, ensure the following tools are installed:
 
 - `bash`
 - `nmap`
@@ -22,66 +55,103 @@ Make sure the following are installed:
 - [`dirsearch`](https://github.com/maurosoria/dirsearch)
 - `jq`
 - `curl`
-- (Optional) `git` for tracking output history
+- `git` (optional, for versioning reports)
 
-> Set the `PATH_TO_DIRSEARCH` variable if `dirsearch.py` is not in your `$PATH`.
+> Set the `PATH_TO_DIRSEARCH` variable in the script if `dirsearch.py` is not in your `$PATH`.
+
+---
 
 ## Installation
 
-Clone the repo and make the script executable:
+Clone the repository and make the script executable:
 
 ```bash
 git clone https://github.com/mrlrch/malwaricon.git
 cd malwaricon
 chmod +x malwaricon.sh scan.lib
+````
 
-Usage
-Basic scan
+---
 
+## Usage
+
+### Basic Scan
+
+```bash
 ./malwaricon.sh example.com
+```
 
-Specific module
+### Specific Module Execution
 
+```bash
 ./malwaricon.sh example.com nmap-only
 ./malwaricon.sh example.com dirsearch-only
 ./malwaricon.sh example.com crt-only
+```
 
-Multiple domains
+### Multiple Domains
 
-./malwaricon.sh -m nmap-only example.com test.com
+```bash
+./malwaricon.sh -m dirsearch-only example.com test.com
+```
 
-Interactive mode
+### Interactive Mode
 
+```bash
 ./malwaricon.sh -i -m dirsearch-only
+```
 
-Type quit to exit interactive mode.
-Output
+Type `quit` to stop scanning.
 
-Results are saved in a folder named after the domain:
+---
 
+## Output
+
+Results are stored in a directory named after the scanned domain:
+
+```
 example.com_recon/
-├── nmap
-├── dirsearch
-├── crt
+├── crt/
+├── dirsearch/
+├── nmap/
 └── report
+```
 
-The report file summarizes all results for quick analysis.
-Scheduled scans with Cron
+The `report` file includes a summary of all actions and findings.
 
-To schedule a daily scan at 9:30 PM:
+---
 
+## Scheduled Scans (Cron)
+
+To schedule automated scans (e.g., daily at 21:30):
+
+```cron
 30 21 * * * /path/to/malwaricon.sh example.com
 40 21 * * * git -C /path/to/output add . && git -C /path/to/output commit -m "daily scan" && git -C /path/to/output push
+```
 
-License
+---
 
-This project is released under the MIT License.
-Originally authored by MIT and adapted by Malwarilia.
-Website: https://malwarilia.com/
-Medium: https://medium.com/@malwarilia
-Twitter: https://x.com/malwarilia
+## License
 
-Disclaimer
+This project is licensed under the MIT License.
+Originally authored by MIT and adapted by **Malwarilia**.
 
-Use this tool only on systems you own or have explicit permission to test.
-Unauthorized scanning is illegal and unethical.
+---
+
+## Disclaimer
+
+This tool is intended for ethical hacking, cybersecurity research, and **Bug Bounty recon phases**.
+Use it only on systems you own or have explicit permission to test.
+Unauthorized use may violate laws and ethical standards.
+
+---
+
+## Contact
+
+* Website: [https://malwarilia.com](https://malwarilia.com)
+* Medium: [https://medium.com/@malwarilia](https://medium.com/@malwarilia)
+* Twitter: [https://twitter.com/malwarilia](https://twitter.com/malwarilia)
+
+```
+```
